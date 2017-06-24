@@ -127,7 +127,7 @@ Features:
 
 **input**:
 
-.. code:: json
+.. code:: python
    
    ...
    [1926.3068, "SYL", ""], 
@@ -142,7 +142,7 @@ Features:
 
 **output**:
 
-.. code:: json
+.. code:: python
 
   ...
   {
