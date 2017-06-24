@@ -193,7 +193,7 @@ Features:
 
 .. code:: python
 
-   print(caption.timecode.parse(seconds=True))
+   print(caption.timecode.parse())
 
 .. code:: python
 
