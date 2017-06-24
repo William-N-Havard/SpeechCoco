@@ -128,6 +128,36 @@ Features:
 
 - Aggregate all the information in the JSON files into a single SQLite database
 - Find captions according to specific filters (name, gender and nationality of the speaker, disfluency position, speed, duration, and words in the caption). *The script automatically builds the SQLite query. The user can also provide his own SQLite query.*
+
+**Example**
+
+*The following Python code gets all the captions spoken by a male with an american accent for which the speed was slown down by 10% and that contain "keys" at any position*
+
+.. code:: python
+
+    # create SpeechCoco object
+    db = SpeechCoco(train_2014.sqlite3, train_translate.sqlite3, verbose=True)
+
+    # filter captions (returns Caption Objects)
+    captions = db.filterCaptions(gender="Male", nationality="US", speed=0.9, text='%keys%')
+    for caption in captions:
+        print('\n{}\t{}\t{}\t{}\t{}\t{}\t\t{}'.format(caption.imageID,
+                                                      caption.captionID,
+                                                      caption.speaker.name,
+                                                      caption.speaker.nationality,
+                                                      caption.speed,
+                                                      caption.filename,
+                                                      caption.text))
+
+.. code:: console
+
+    ...
+    298817	26763	Phil	0.9	298817_26763_Phil_None_0-9.wav		A group of turkeys with bushes in the background.
+    108505	147972	Phil	0.9	108505_147972_Phil_Middle_0-9.wav		Person using a, um, slider cell phone with blue backlit keys.
+    258289	154380	Bruce	0.9	258289_154380_Bruce_None_0-9.wav		Some donkeys and sheep are in their green pens .
+    545312	201303	Phil	0.9	545312_201303_Phil_None_0-9.wav		A man walking next to a couple of donkeys.
+    ...
+
 - Find all the captions belonging to a specific image
 - Parse the timecodes and have them structured
 
