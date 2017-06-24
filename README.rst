@@ -74,7 +74,7 @@ Lin, T.-Y., Maire, M., Belongie, S., Bourdev, L., Girshick, R., Hays, J., Dollá
 Contents
 ============
 
-The Dropbox repository is organized as follows:
+The repository is organized as follows:
 
 - CORPUS-MSCOCO (~75GB)
 
