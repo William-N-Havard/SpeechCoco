@@ -1,5 +1,8 @@
+SpeechCoco
+==========
+
 Introduction
-============
+------------
 
 Our corpus is an extension of the MSCOCO image recognition and captioning dataset. MSCOCO comprises images paired with a set of five captions. Yet, it does not include any speech. Therefore, we used `Voxygen's text-to-speech system <https://www.voxygen.fr/>`_ to synthesised the available captions. 
 
@@ -8,7 +11,7 @@ The addition of speech as a new modality enables MSCOCO to be used for researche
 Our corpus is licenced under a `Creative Commons Attribution 4.0 License <https://creativecommons.org/licenses/by/4.0/legalcode>`_.
 
 Data Set
-============
+--------
 
 - This corpus contains **616,767** spoken captions from MSCOCO's val2014 and train2014 subsets (respectively 414,113 for train2014 and 202,654 for val2014).
 - We used 8 different voices. 4 of them have a British accent (Paul, Bronwen, Judith and Elizabeth) and the 4 others have an American accent (Phil, Bruce, Amanda, Jenny).
@@ -35,7 +38,7 @@ Data Set
 
 
 Inter- and intra-speaker variability
-====================================
+------------------------------------
 
 To be sure our corpus was realistic enough, we computed inter- and intra-speaker variability.
 We had some sample sentences synthesised by each speaker. We then extracted words that were repeated across a few sentences. DTW was then computed for all the occurrences of the same word by the same speaker (e.g. Amanda vs Amanda) and for all the occurrences of the same word pronounced by different speakers (e.g Amanda vs Bronwen, Amanda vs Bruce, etc.).
@@ -63,7 +66,7 @@ gTTS          69,67       63,77       69,71       65,27       62,28       64,16 
 As expected intra-speaker variability is lower than inter-speaker variability. Inter-variability is greater between William and the other voices, which is to be expected as William is a real human voice. However, **inter-variability between the synthetic voices is still high** meaning the corpus we synthesised is realistic.
 
 References
-============
+----------
 
 As for now, we didn't publish any article describing in details our corpus and methodology.
 You might want to read the following papers if you wish to learn more about MSCOCO. 
@@ -74,7 +77,7 @@ Lin, T.-Y., Maire, M., Belongie, S., Bourdev, L., Girshick, R., Hays, J., Dollá
 
 
 Contents
-============
+--------
 
 The repository is organized as follows:
 
@@ -103,7 +106,7 @@ The repository is organized as follows:
            - setup.py
 
 Filenames
-============
+---------
 
 **.wav** files contain the spoken version of a caption
 
@@ -116,7 +119,7 @@ We adopted the following naming convention for both the WAV and JSON files:
 *imageID_captionID_Speaker_DisfluencyPosition_Speed[.wav/.json]*
 
 Script
-============
+------
 
 We created a script called **speechcoco.py** in order to handle the metadata and allow the user to easily find captions according to specific filters. The script uses the \*.db files.
 
