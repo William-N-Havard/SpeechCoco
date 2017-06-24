@@ -161,8 +161,8 @@ Features:
 .. code:: python
 
     captions = db.getImgCaptions(298817)
-        for caption in captions:
-            print('\n{}'.format(caption.text))
+    for caption in captions:
+        print('\n{}'.format(caption.text))
 
 .. code:: console
 
