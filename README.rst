@@ -58,6 +58,8 @@ William       70,41       72,19       77,02       71,83       69,21       72,08 
 gTTS          69,67       63,77       69,71       65,27       62,28       64,16       68,41       75,38       76,74       45,77
 ========== =========== =========== =========== =========== =========== =========== =========== =========== =========== ===========
 
+.. image:: img/dtw.png
+
 As expected intra-speaker variability is lower than inter-speaker variability. Inter-variability is greater between William and the other voices, which is to be expected as William is a real human voice. However, **inter-variability between the synthetic voices is still high** meaning the corpus we synthesised is realistic.
 
 References
@@ -165,6 +167,9 @@ Features:
   ...
 
 - Convert the timecodes to Praat TextGrid files
+
+.. image:: img/praat.png
+
 - Get the words, syllables and phonemes between *n* seconds/milliseconds
 
 We provide an example on how to use the script at the end.
