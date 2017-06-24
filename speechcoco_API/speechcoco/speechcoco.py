@@ -738,7 +738,7 @@ if __name__ == '__main__':
     # filter captions (returns SQLite Row Objects)
     captions = db.filterCaptions(gender="Male", nationality="US", speed=0.9, text='%keys%', raw=True)
     for caption in captions:
-        print('\n{}\t{}\t{}\t{}\t{}\t{}\t\t{}'.format(caption['imageID'],
+        print('\n{}\t{}\t{}\t{}\t{}\t\t{}'.format(caption['imageID'],
                                                       caption['captionID'],
                                                       caption['speaker'],
                                                       caption['speed'],
