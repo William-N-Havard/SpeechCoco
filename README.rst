@@ -126,12 +126,10 @@ We created a script called **speechcoco.py** in order to handle the metadata and
 
 Features:
 
-- Aggregate all the information in the JSON files into a single SQLite database
-- Find captions according to specific filters (name, gender and nationality of the speaker, disfluency position, speed, duration, and words in the caption). *The script automatically builds the SQLite query. The user can also provide his own SQLite query.*
+- **Aggregate all the information in the JSON files into a single SQLite database**
+- **Find captions according to specific filters (name, gender and nationality of the speaker, disfluency position, speed, duration, and words in the caption).** *The script automatically builds the SQLite query. The user can also provide his own SQLite query.*
 
-**Example**
-
-*The following Python code gets all the captions spoken by a male with an american accent for which the speed was slown down by 10% and that contain "keys" at any position*
+*The following Python code returns all the captions spoken by a male with an american accent for which the speed was slown down by 10% and that contain "keys" at any position*
 
 .. code:: python
 
@@ -158,8 +156,23 @@ Features:
     545312	201303	Phil	0.9	545312_201303_Phil_None_0-9.wav		A man walking next to a couple of donkeys.
     ...
 
-- Find all the captions belonging to a specific image
-- Parse the timecodes and have them structured
+- **Find all the captions belonging to a specific image**
+
+.. code:: python
+
+    captions = db.getImgCaptions(298817)
+        for caption in captions:
+            print('\n{}'.format(caption.text))
+
+.. code:: console
+
+    Birds wondering through grassy ground next to bushes.
+    A flock of turkeys are making their way up a hill.
+    Um, ah. Two wild turkeys in a field walking around.
+    Four wild turkeys and some bushes trees and weeds.
+    A group of turkeys with bushes in the background.
+
+- **Parse the timecodes and have them structured**
 
 **input**:
 
@@ -177,6 +190,10 @@ Features:
    ...
 
 **output**:
+
+.. code:: python
+
+   print(caption.timecode.parse(seconds=True))
 
 .. code:: python
 
@@ -200,10 +217,79 @@ Features:
   },
   ...
 
-- Convert the timecodes to Praat TextGrid files
+- **Convert the timecodes to Praat TextGrid files**
+
+.. code:: python
+
+    caption.timecode.toTextgrid(outputDir, level=3)
 
 .. image:: img/praat.png
 
-- Get the words, syllables and phonemes between *n* seconds/milliseconds
+- **Get the words, syllables and phonemes between** *n* **seconds/milliseconds**
+
+*The following Python code returns all the words between 0.2 and 0.6 seconds for which at least 50% of the word's total lenght is within the specified interval*
+
+.. code:: python
+
+    pprint(caption.getWords(0.20, 0.60, seconds=True, level=1, olapthr=50))
+
+.. code:: console
+
+    ...
+    404537	827239	Bruce	US	0.9	404537_827239_Bruce_None_0-9.wav		Eyeglasses, a cellphone, some keys and other pocket items are all laid out on the cloth. .
+    [
+        {
+            'begin': 0.0,
+            'end': 0.7202778,
+            'overlapPercentage': 55.53412863758955,
+            'word': 'eyeglasses'
+        }
+    ]
+     ...
+
+*level=3 returns the words, syllabes and phonemes*
+
+.. code:: python
+
+    pprint(caption.getWords(0.20, 0.60, seconds=True, level=3, olapthr=50))
+
+
+.. code:: console
+
+    ...
+    404537	827239	Bruce	US	0.9	404537_827239_Bruce_None_0-9.wav		Eyeglasses, a cellphone, some keys and other pocket items are all laid out on the cloth. .
+    [{'begin': 0.0,
+      'end': 0.7202778,
+      'overlapPercentage': 55.53412863758955,
+      'syllables': [{'begin': 0.1915972,
+                     'end': 0.5977777999999999,
+                     'overlapPercentage': 97.93126505795698,
+                     'phonemes': [{'begin': 0.1915972,
+                                   'end': 0.2501389,
+                                   'overlapPercentage': 85.64647080627994,
+                                   'value': 'g'},
+                                  {'begin': 0.2501389,
+                                   'end': 0.30048610000000003,
+                                   'overlapPercentage': 100.0,
+                                   'value': 'l'},
+                                  {'begin': 0.30048610000000003,
+                                   'end': 0.44875,
+                                   'overlapPercentage': 100.0,
+                                   'value': 'a'},
+                                  {'begin': 0.44875,
+                                   'end': 0.5977777999999999,
+                                   'overlapPercentage': 100.0,
+                                   'value': 's'}],
+                     'value': 'glas'},
+                    {'begin': 0.5977777999999999,
+                     'end': 0.7202778,
+                     'overlapPercentage': 1.8140408163265813,
+                     'phonemes': [{'begin': 0.5977777999999999,
+                                   'end': 0.6425694,
+                                   'overlapPercentage': 4.961198081783327,
+                                   'value': '@'}],
+                     'value': '@z'}],
+      'word': 'eyeglasses'}]
+     ...
 
 We provide an example on how to use the script at the end.
