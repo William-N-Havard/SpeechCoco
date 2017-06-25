@@ -651,6 +651,15 @@ class SpeechCoco:
             except:
                 os.makedirs(os.path.split(mergedFilename)[0])
 
+        speakers={"Bruce":['US', 'Male'],
+                  "Paul": ['UK', 'Male'],
+                  "Phil": ['US', 'Male'],
+                  "Judith": ['UK', 'Female'],
+                  "Elizabeth": ['UK', 'Female'],
+                  "Bronwen": ['UK', 'Female'],
+                  "Jenny": ['US', 'Female'],
+                  "Amanda": ['US', 'Female']}
+
         # if the database doesn't exist, we create it.
         database = sqlite3.connect(mergedFilename)
         db = database.cursor()
@@ -659,8 +668,6 @@ class SpeechCoco:
 
         # Speaker Table
         db.execute('CREATE TABLE IF NOT EXISTS speakers (name TEXT PRIMARY KEY, gender TEXT, nationality TEXT)')
-        speakerInsertion = 'INSERT INTO speakers (name, nationality, gender) VALUES ("Bruce", "US", "Male"),("Paul", "UK", "Male"),("Phil", "US", "Male"),("Judith", "UK", "Female"),("Elizabeth", "UK", "Female"),("Jenny", "US", "Female"),("Bronwen", "UK", "Female"),("Amanda", "US", "Female")'
-        db.execute(speakerInsertion)
 
         # Caption table
         db.execute(
@@ -679,6 +686,9 @@ class SpeechCoco:
                 json.dumps(jsonData['timecode']), jsonData['disfluency'][0], jsonData['disfluency'][1],
                 jsonData['speed'], jsonData['synthesisedCaption'], jsonData['speaker']))
 
+                speakerInsertion = 'INSERT OR IGNORE INTO speakers (name, nationality, gender) VALUES (?,?,?)'
+                db.execute(speakerInsertion, (jsonData['speaker'], speakers[jsonData['speaker']][0], speakers[jsonData['speaker']][1]))
+
         database.commit()
         database.close()
         if verbose:
@@ -692,7 +702,7 @@ if __name__ == '__main__':
     jsonDir = baseDir + "json/"
     wavDir = baseDir + "wav/"
     transDir = baseDir + "translations/"
-    outputTxtGrid = '/home/getalp/havardw/Documents/textgrid/'
+    outputTxtGrid = './textgrid/'
     # databases
     translationDB = transDir + "train_translate.sqlite3"
     dbName = baseDir + 'train_2014.sqlite3'
