@@ -227,7 +227,7 @@ Features:
 
 - **Get the words, syllables and phonemes between** *n* **seconds/milliseconds**
 
-*The following Python code returns all the words between 0.2 and 0.6 seconds for which at least 50% of the word's total lenght is within the specified interval*
+*The following Python code returns all the words between 0.2 and 0.6 seconds for which at least 50% of the word's total length is within the specified interval*
 
 .. code:: python
 
