@@ -248,7 +248,7 @@ Features:
      ...
 - **Get the translations of the selected captions**
 
-*As for now, only japanese translations are available. We also used `Kytea <http://www.phontron.com/kytea/>`_ to tokenize and get the POS tagging of the translations done with Google Translate*
+*As for now, only japanese translations are available. We also used* `Kytea <http://www.phontron.com/kytea/>`_ *to tokenize and tag the captions translated with Google Translate*
 
 .. code:: python
 
