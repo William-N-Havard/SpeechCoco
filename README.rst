@@ -113,7 +113,7 @@ Filenames
 
 **.json** files contain all the metadata of a given WAV file
 
-**.db** files are SQLite databases containing all the information contained in the JSON files
+**.sqlite3** files are SQLite databases containing all the information contained in the JSON files
 
 We adopted the following naming convention for both the WAV and JSON files:
 
