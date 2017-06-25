@@ -246,50 +246,49 @@ Features:
         }
     ]
      ...
-
-*level=3 returns the words, syllabes and phonemes*
+- **Get the translations of the selected captions**
 
 .. code:: python
 
-    pprint(caption.getWords(0.20, 0.60, seconds=True, level=3, olapthr=50))
+    captions = db.getImgCaptions(298817)
+    for caption in captions:
+        print('\n{}'.format(caption.text))
+        
+        # Get translations and POS
+        print('\tja_google: {}'.format(db.getTranslation(caption.captionID, "ja_google")))
+        print('\t\tja_google_tokens: {}'.format(db.getTokens(caption.captionID, "ja_google")))
+        print('\t\tja_google_pos: {}'.format(db.getPOS(caption.captionID, "ja_google")))
+        print('\tja_excite: {}'.format(db.getTranslation(caption.captionID, "ja_excite")))
 
 
 .. code:: console
 
-    ...
-    404537	827239	Bruce	US	0.9	404537_827239_Bruce_None_0-9.wav		Eyeglasses, a cellphone, some keys and other pocket items are all laid out on the cloth. .
-    [{'begin': 0.0,
-      'end': 0.7202778,
-      'overlapPercentage': 55.53412863758955,
-      'syllables': [{'begin': 0.1915972,
-                     'end': 0.5977777999999999,
-                     'overlapPercentage': 97.93126505795698,
-                     'phonemes': [{'begin': 0.1915972,
-                                   'end': 0.2501389,
-                                   'overlapPercentage': 85.64647080627994,
-                                   'value': 'g'},
-                                  {'begin': 0.2501389,
-                                   'end': 0.30048610000000003,
-                                   'overlapPercentage': 100.0,
-                                   'value': 'l'},
-                                  {'begin': 0.30048610000000003,
-                                   'end': 0.44875,
-                                   'overlapPercentage': 100.0,
-                                   'value': 'a'},
-                                  {'begin': 0.44875,
-                                   'end': 0.5977777999999999,
-                                   'overlapPercentage': 100.0,
-                                   'value': 's'}],
-                     'value': 'glas'},
-                    {'begin': 0.5977777999999999,
-                     'end': 0.7202778,
-                     'overlapPercentage': 1.8140408163265813,
-                     'phonemes': [{'begin': 0.5977777999999999,
-                                   'end': 0.6425694,
-                                   'overlapPercentage': 4.961198081783327,
-                                   'value': '@'}],
-                     'value': '@z'}],
-      'word': 'eyeglasses'}]
-     ...
+        Birds wondering through grassy ground next to bushes.
+        ja_google: 鳥は茂みの下に茂った地面を抱えています。
+            ja_google_tokens: 鳥 は 茂み の 下 に 茂 っ た 地面 を 抱え て い ま す 。
+            ja_google_pos: 鳥/名詞/とり は/助詞/は 茂み/名詞/しげみ の/助詞/の 下/名詞/した に/助詞/に 茂/動詞/しげ っ/語尾/っ た/助動詞/た 地面/名詞/じめん を/助詞/を 抱え/動詞/かかえ て/助詞/て い/動詞/い ま/助動詞/ま す/語尾/す 。/補助記号/。
+        ja_excite: 低木と隣接した草深いグラウンドを通って疑う鳥。
 
-We provide an example on how to use the script at the end.
+    A flock of turkeys are making their way up a hill.
+        ja_google: 七面鳥の群れが丘を上っています。
+            ja_google_tokens: 七 面 鳥 の 群れ が 丘 を 上 っ て い ま す 。
+            ja_google_pos: 七/名詞/なな 面/名詞/めん 鳥/名詞/とり の/助詞/の 群れ/名詞/むれ が/助詞/が 丘/名詞/おか を/助詞/を 上/動詞/のぼ っ/語尾/っ て/助詞/て い/動詞/い ま/助動詞/ま す/語尾/す 。/補助記号/。
+        ja_excite: 七面鳥の群れは丘の上で進んでいる。
+
+    Um, ah. Two wild turkeys in a field walking around.
+        ja_google: 野生のシチメンチョウ、野生の七面鳥
+            ja_google_tokens: 野生 の シチメンチョウ 、 野生 の 七 面 鳥
+            ja_google_pos: 野生/名詞/やせい の/助詞/の シチメンチョウ/名詞/しちめんちょう 、/補助記号/、 野生/名詞/やせい の/助詞/の 七/名詞/なな 面/名詞/めん 鳥/名詞/ちょう
+        ja_excite: まわりで移動しているフィールドの2羽の野生の七面鳥
+
+    Four wild turkeys and some bushes trees and weeds.
+        ja_google: 4本の野生のシチメンチョウといくつかの茂みの木と雑草
+            ja_google_tokens: 4 本 の 野生 の シチメンチョウ と いく つ か の 茂み の 木 と 雑草
+            ja_google_pos: 4/名詞/４ 本/接尾辞/ほん の/助詞/の 野生/名詞/やせい の/助詞/の シチメンチョウ/名詞/しちめんちょう と/助詞/と いく/名詞/いく つ/接尾辞/つ か/助詞/か の/助詞/の 茂み/名詞/しげみ の/助詞/の 木/名詞/き と/助詞/と 雑草/名詞/ざっそう
+        ja_excite: 4羽の野生の七面鳥およびいくつかの低木木と雑草
+
+    A group of turkeys with bushes in the background.
+        ja_google: 背景に茂みを持つ七面鳥の群
+            ja_google_tokens: 背景 に 茂み を 持 つ 七 面 鳥 の 群
+            ja_google_pos: 背景/名詞/はいけい に/助詞/に 茂み/名詞/しげみ を/助詞/を 持/動詞/も つ/語尾/つ 七/名詞/なな 面/名詞/めん 鳥/名詞/ちょう の/助詞/の 群/名詞/むれ
+        ja_excite: 背景の低木を持つ七面鳥のグループ
