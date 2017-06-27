@@ -1,5 +1,5 @@
 #!usr/bin/env python
-# -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 
 import os
 import time
@@ -497,7 +497,13 @@ class SpeechCoco:
         :param imgID:
         :return:
         """
-        query = "SELECT * FROM captions WHERE imageID={}".format(imgID)
+
+        if type(imgID) is list:
+            baseQuery="SELECT * FROM captions WHERE "
+            query=baseQuery+SpeechCoco._buildQuery(imageID=imgID)
+        else:
+            query="SELECT * FROM captions WHERE imageID={}".format(imgID)
+
         self.cursor.execute(query)
         result = self.cursor.fetchall()
 
@@ -582,6 +588,29 @@ class SpeechCoco:
         else:
             return result
 
+    def selectCaptions(self, captionID, raw=False):
+        """
+
+                :param captionID:
+                :return:
+                """
+
+        if type(captionID) is list:
+            baseQuery = "SELECT * FROM captions WHERE "
+            query = baseQuery   + SpeechCoco._buildQuery(captionID=captionID)
+        else:
+            query = "SELECT * FROM captions WHERE captionID={}".format(captionID)
+
+        self.cursor.execute(query)
+        result = self.cursor.fetchall()
+
+        if self._verbose == True:
+            print("|> Query executed!")
+
+        if raw == False:
+            return [Caption(self._speakers[value['speaker']], value) for value in result]
+        else:
+            return result
     #
     #   TRANSLATIONS
     #
@@ -698,14 +727,14 @@ class SpeechCoco:
 if __name__ == '__main__':
 
     # paths
-    baseDir = "./train2014/"
+    baseDir = "./val2014/"
     jsonDir = baseDir + "json/"
     wavDir = baseDir + "wav/"
-    transDir = baseDir + "translations/"
+    transDir = baseDir
     outputTxtGrid = './textgrid/'
     # databases
-    translationDB = transDir + "train_translate.sqlite3"
-    dbName = baseDir + 'train_2014.sqlite3'
+    translationDB = transDir + "val_translate.sqlite3"
+    dbName = baseDir + 'val_2014.sqlite3'
 
     # lets merge all the JSONs in a directory into a single SQLite database
     # SpeechCoco.jsonToSQL(jsonDir, './'+dbName, verbose=True)
@@ -741,16 +770,17 @@ if __name__ == '__main__':
         caption.timecode.toTextgrid(outputTxtGrid, level=3)
 
         # Get translations and POS
-        print(db.getTranslation(caption.captionID, "ja_google"))
-        print(db.getPOS(caption.captionID, "ja_google"))
-        print(db.getTranslation(caption.captionID, "ja_excite"))
+        print('\tja_google: {}'.format(db.getTranslation(caption.captionID, "ja_google")))
+        print('\t\tja_google_tokens: {}'.format(db.getTokens(caption.captionID, "ja_google")))
+        print('\t\tja_google_pos: {}'.format(db.getPOS(caption.captionID, "ja_google")))
+        print('\tja_excite: {}'.format(db.getTranslation(caption.captionID, "ja_excite")))
 
     # filter captions (returns SQLite Row Objects)
     captions = db.filterCaptions(gender="Male", nationality="US", speed=0.9, text='%keys%', raw=True)
     for caption in captions:
-        print('\n{}\t{}\t{}\t{}\t{}\t\t{}'.format(caption['imageID'],
-                                                      caption['captionID'],
-                                                      caption['speaker'],
-                                                      caption['speed'],
-                                                      caption['wavFilename'],
-                                                      caption['text']))
+        print('{}\t{}\t{}\t{}\t{}\t\t{}'.format(caption['imageID'],
+                                                  caption['captionID'],
+                                                  caption['speaker'],
+                                                  caption['speed'],
+                                                  caption['wavFilename'],
+                                                  caption['text']))
