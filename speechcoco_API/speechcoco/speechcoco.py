@@ -15,6 +15,7 @@ from pprint import pprint
     Date created: 22/03/2017
     Date last modified: 07/07/2017
     Python version: successfully tested on Python 2.7, 3.5 and 3.6 :-)
+    URL: https://github.com/William-N-Havard/SpeechCoco
 '''
 
 __author__ = "William N. Havard"
