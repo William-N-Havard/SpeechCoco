@@ -13,7 +13,8 @@ from pprint import pprint
     File name: speechcoco.py
     Author: William N. Havard - Research Intern (LIG - GETALP)
     Date created: 22/03/2017
-    Date last modified: 24/06/2017
+    Date last modified: 07/07/2017
+    Python version: successfully tested on Python 2.7, 3.5 and 3.6 :-)
 '''
 
 __author__ = "William N. Havard"
@@ -427,7 +428,7 @@ class SpeechCoco:
 
         self._speakers = dict()
         self._createIndex()
-        self._verbose = True
+        self._verbose = verbose
 
     def _createIndex(self):
         query = 'SELECT * FROM speakers'
@@ -462,7 +463,9 @@ class SpeechCoco:
             query = 'SELECT * FROM speakers'
         else:
             query = 'SELECT * FROM speakers WHERE ' + SpeechCoco._buildQuery(nationality=nationality, gender=gender)
-        print(query)
+
+        if self._verbose == True:
+            print("|> Querying ... {}".format(query))
 
         self.cursor.execute(query)
         result = self.cursor.fetchall()
@@ -549,7 +552,7 @@ class SpeechCoco:
             speed = [speed]
         query = 'SELECT * FROM captions INNER JOIN speakers ON captions.speaker=speakers.name '
 
-        if len(speaker) != 0 or len(gender) != 0 or len(disfluencyPos) != 0 or len(nationality) != 0 or len(speed) != 0:
+        if len(speaker) != 0 or len(gender) != 0 or len(disfluencyPos) != 0 or len(nationality) != 0 or len(speed) != 0 or len(text) != 0:
             whereQuery = SpeechCoco._buildQuery(speaker=speaker, gender=gender, disfluencyPos=disfluencyPos,
                                                 nationality=nationality, speed=speed, text=text)
             query = query + 'WHERE ' + whereQuery
@@ -568,7 +571,7 @@ class SpeechCoco:
         else:
             return result
 
-    def queryCaptions(self, query, raw=False):
+    def queryCaptions(self, query):
         """
         :param query: user's own SQL query
         :return: results
@@ -583,10 +586,7 @@ class SpeechCoco:
         if self._verbose == True:
             print("|> Query executed!")
 
-        if raw == False:
-            return [Caption(self._speakers[value['speaker']], value) for value in result]
-        else:
-            return result
+        return result
 
     def selectCaptions(self, captionID, raw=False):
         """
@@ -671,7 +671,8 @@ class SpeechCoco:
         """
 
         startTime = time.time()
-        print("|> Merging ... ")
+        if verbose==True:
+            print("|> Merging ... ")
 
         # create dir
         if os.path.split(mergedFilename)[0]:
@@ -693,7 +694,8 @@ class SpeechCoco:
         database = sqlite3.connect(mergedFilename)
         db = database.cursor()
 
-        print("Writing DATA")
+        if verbose==True:
+            print("Writing DATA")
 
         # Speaker Table
         db.execute('CREATE TABLE IF NOT EXISTS speakers (name TEXT PRIMARY KEY, gender TEXT, nationality TEXT)')
