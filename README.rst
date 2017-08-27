@@ -37,6 +37,7 @@ Data Set
 
 - On average, each caption comprises 10.79 tokens, disfluencies included. The WAV files are on average 3.52 second long.
 
+- The dataset is available `here <https://persyval-platform.imag.fr/perscido/web/DS80/detaildataset>`_ and has the following DOI: 10.18709/PERSCIDO.2017.06.DS80
 
 Inter- and intra-speaker variability
 ====================================
