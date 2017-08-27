@@ -69,7 +69,8 @@ As expected intra-speaker variability is lower than inter-speaker variability. I
 References
 ==========
 
-As for now, we didn't publish any article describing in details our corpus and methodology.
+`Havard W. N., Besacier L., Rosec O. (2017). SPEECH-COCO: 600k Visually Grounded Spoken Captions Aligned to MSCOCO Data Set. Grounding Language Understanding GLU2017, Interspeech Workshop, Stockholm.<https://arxiv.org/abs/1707.08435>`_
+
 You might want to read the following papers if you wish to learn more about MSCOCO. 
 
 Chen, X., Fang, H., Lin, T.-Y., Vedantam, R., Gupta, S., Dollar, P., & Zitnick, C. Lawrence. (2015). Microsoft COCO Captions: Data Collection and Evaluation Server. 
