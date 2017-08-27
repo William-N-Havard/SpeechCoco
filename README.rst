@@ -78,13 +78,6 @@ References
 
 DOI: 10.18709/PERSCIDO.2017.06.DS80
 
-You might want to read the following papers if you wish to learn more about MSCOCO. 
-
-Chen, X., Fang, H., Lin, T.-Y., Vedantam, R., Gupta, S., Dollar, P., & Zitnick, C. Lawrence. (2015). Microsoft COCO Captions: Data Collection and Evaluation Server. 
-
-Lin, T.-Y., Maire, M., Belongie, S., Bourdev, L., Girshick, R., Hays, J., Dollár, P. (2014). Microsoft COCO: Common Objects in Context.
-
-
 Contents
 ========
 
