@@ -70,11 +70,11 @@ As expected intra-speaker variability is lower than inter-speaker variability. I
 References
 ==========
 
-*Paper (accepted at GLU2017 - Grounding Language Understanding - Interspeech Official Workshop):*
+**Paper (accepted at GLU2017 - Grounding Language Understanding - Interspeech Official Workshop):**
 
 `Havard W. N., Besacier L., Rosec O. (2017). SPEECH-COCO: 600k Visually Grounded Spoken Captions Aligned to MSCOCO Data Set. Grounding Language Understanding GLU2017, Interspeech Workshop, Stockholm. <https://arxiv.org/abs/1707.08435>`_
 
-*Dataset:*
+**Dataset:**
 
 DOI: 10.18709/PERSCIDO.2017.06.DS80
 
