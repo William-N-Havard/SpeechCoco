@@ -85,15 +85,16 @@ BibTex
 
 .. code:: latex
 
-@inproceedings{Havard2017,
-  author={William Havard and Laurent Besacier and Olivier Rosec},
-  title={SPEECH-COCO: 600k Visually Grounded Spoken Captions Aligned to MSCOCO Data Set},
-  year=2017,
-  booktitle={Proc. GLU 2017 International Workshop on Grounding Language Understanding},
-  pages={42--46},
-  doi={10.21437/GLU.2017-9},
-  url={http://dx.doi.org/10.21437/GLU.2017-9}
-}
+    @inproceedings{
+      Havard2017,
+      author={William Havard and Laurent Besacier and Olivier Rosec},
+      title={SPEECH-COCO: 600k Visually Grounded Spoken Captions Aligned to MSCOCO Data Set},
+      year=2017,
+      booktitle={Proc. GLU 2017 International Workshop on Grounding Language Understanding},
+      pages={42--46},
+      doi={10.21437/GLU.2017-9},
+      url={http://dx.doi.org/10.21437/GLU.2017-9}
+    }
 
 
 **Dataset:**
