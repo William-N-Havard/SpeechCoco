@@ -82,7 +82,8 @@ References
 DOI Paper: 10.21437/GLU.2017-9
 
 BibTex
-.. code::
+
+.. code:: latex
 
 @inproceedings{Havard2017,
   author={William Havard and Laurent Besacier and Olivier Rosec},
