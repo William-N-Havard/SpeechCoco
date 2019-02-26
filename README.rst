@@ -2,6 +2,11 @@
 SpeechCoco
 ==========
 
+Download
+========
+
+Download dataset here: https://persyval-platform.univ-grenoble-alpes.fr/DS80/detaildataset
+
 Introduction
 ============
 
@@ -74,11 +79,26 @@ References
 
 `Havard W. N., Besacier L., Rosec O. (2017). SPEECH-COCO: 600k Visually Grounded Spoken Captions Aligned to MSCOCO Data Set. Grounding Language Understanding GLU2017, Interspeech Workshop, Stockholm. <https://arxiv.org/abs/1707.08435>`_
 
-DOI: 10.21437/GLU.2017-9
+DOI Paper: 10.21437/GLU.2017-9
+
+BibTex
+.. code::
+
+@inproceedings{Havard2017,
+  author={William Havard and Laurent Besacier and Olivier Rosec},
+  title={SPEECH-COCO: 600k Visually Grounded Spoken Captions Aligned to MSCOCO Data Set},
+  year=2017,
+  booktitle={Proc. GLU 2017 International Workshop on Grounding Language Understanding},
+  pages={42--46},
+  doi={10.21437/GLU.2017-9},
+  url={http://dx.doi.org/10.21437/GLU.2017-9}
+}
+
 
 **Dataset:**
 
-DOI: 10.18709/PERSCIDO.2017.06.DS80
+Download dataset here: https://persyval-platform.univ-grenoble-alpes.fr/DS80/detaildataset
+DOI Dataset: 10.18709/PERSCIDO.2017.06.DS80
 
 Contents
 ========
