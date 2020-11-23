@@ -77,7 +77,7 @@ References
 
 **Paper (accepted at GLU2017 - Grounding Language Understanding - Interspeech Official Workshop):**
 
-`Havard W. N., Besacier L., Rosec O. (2017). SPEECH-COCO: 600k Visually Grounded Spoken Captions Aligned to MSCOCO Data Set. Grounding Language Understanding GLU2017, Interspeech Workshop, Stockholm. <https://arxiv.org/abs/1707.08435>`_
+`Havard W. N., Besacier L., Rosec O. (2017). SPEECH-COCO: 600k Visually Grounded Spoken Captions Aligned to MSCOCO Data Set. Grounding Language Understanding GLU2017, Interspeech Workshop, Stockholm. <https://www.isca-speech.org/archive/GLU_2017/abstracts/GLU2017_paper_10.html>`_
 
 DOI Paper: 10.21437/GLU.2017-9
 
