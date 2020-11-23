@@ -5,7 +5,7 @@ SpeechCoco
 Download DataSet
 ================
 
-Download dataset here: https://persyval-platform.univ-grenoble-alpes.fr/DS80/detaildataset
+Download dataset here: https://zenodo.org/record/4282267
 
 Introduction
 ============
@@ -42,7 +42,7 @@ Data Set
 
 - On average, each caption comprises 10.79 tokens, disfluencies included. The WAV files are on average 3.52 second long.
 
-- The dataset is available `here <https://persyval-platform.univ-grenoble-alpes.fr/DS80/detaildataset>`_ and has the following DOI: 10.18709/PERSCIDO.2017.06.DS80
+- The dataset is available `here <https://zenodo.org/record/4282267>`_ and has the following DOI: 10.5281/zenodo.4282267
 
 Inter- and intra-speaker variability
 ====================================
@@ -99,8 +99,8 @@ BibTex
 
 **Dataset:**
 
-Download dataset here: https://persyval-platform.univ-grenoble-alpes.fr/DS80/detaildataset
-DOI Dataset: 10.18709/PERSCIDO.2017.06.DS80
+Download dataset here: https://zenodo.org/record/4282267
+DOI Dataset: 10.5281/zenodo.4282267
 
 Contents
 ========
